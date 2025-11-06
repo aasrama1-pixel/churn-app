@@ -15,7 +15,7 @@ st.set_page_config(page_title="Dashboard Prediksi Churn", layout="wide")
 # ======================
 # 2. HEADER DASHBOARD
 # ======================
-st.title("📊 Dashboard Prediksi Churn Pelanggan")
+st.title("Dashboard Prediksi Churn Pelanggan")
 st.markdown("Gunakan aplikasi ini untuk memprediksi apakah pelanggan **berpotensi churn** atau **bertahan** berdasarkan data pelanggan.")
 
 st.divider()
@@ -35,7 +35,7 @@ input_df = pd.DataFrame({
     'lama_langganan_bulan': [lama_langganan_bulan],
     'jumlah_pengaduan': [jumlah_pengaduan]
 })
-st.sidebar.write("📋 Data yang akan diprediksi:")
+st.sidebar.write("Data yang akan diprediksi:")
 st.sidebar.dataframe(input_df)
 
 # ======================
@@ -60,7 +60,7 @@ if st.button("Prediksi Sekarang"):
     )
 
     if prob is not None:
-        st.write(f"### 🔢 Probabilitas Churn: **{prob:.2%}**")
+        st.write(f"### Probabilitas Churn: **{prob:.2%}**")
 
         # progress bar probabilitas churn
         st.progress(int(prob * 100))
@@ -68,7 +68,7 @@ if st.button("Prediksi Sekarang"):
         # ======================
         # 5. VISUALISASI RISIKO
         # ======================
-        st.subheader("📈 Visualisasi Risiko Churn")
+        st.subheader("Visualisasi Risiko Churn")
         fig, ax = plt.subplots(figsize=(4, 4))
         wedges, texts, autotexts = ax.pie(
             [prob, 1 - prob],
@@ -84,7 +84,7 @@ if st.button("Prediksi Sekarang"):
         # ======================
         # 6. INTERPRETASI HASIL
         # ======================
-        st.subheader("🧠 Interpretasi Hasil Prediksi")
+        st.subheader("Interpretasi Hasil Prediksi")
 
         if prob > 0.7:
             st.warning("⚠️ Pelanggan memiliki **risiko tinggi** untuk churn. Perlu tindakan pencegahan segera (misalnya penawaran khusus atau peningkatan layanan).")
@@ -95,14 +95,5 @@ if st.button("Prediksi Sekarang"):
 
 st.divider()
 
-# ======================
-# 7. METRIK MODEL (STATIS)
-# ======================
-st.subheader("📏 Evaluasi Model (Contoh dari Hasil Uji)")
 
-col1, col2 = st.columns(2)
-col1.metric("Akurasi Model", "89%")
-col2.metric("F1-Score", "85%")
-
-st.caption("Nilai di atas berasal dari hasil pengujian model di dataset uji saat pelatihan di Google Colab.")
 

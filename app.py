@@ -9,6 +9,11 @@ from sklearn.metrics import confusion_matrix, accuracy_score, f1_score
 # ======================
 # 1. LOAD MODEL & DATA
 # ======================
+try:
+    st.write("Fitur yang digunakan model:", list(model.feature_names_in_))
+except Exception as e:
+    st.write("Model tidak memiliki atribut feature_names_in_. Gunakan array tanpa kolom.")
+
 model = joblib.load('model.pkl')  # ganti nama file sesuai model kamu
 # opsional: jika punya dataset asli untuk ditampilkan
 # df = pd.read_csv('churn.csv')
@@ -103,3 +108,4 @@ st.markdown("""
 - **True Negative** → pelanggan bertahan yang diprediksi bertahan.  
 - **False Negative** → pelanggan churn tapi salah diprediksi bertahan.
 """)
+

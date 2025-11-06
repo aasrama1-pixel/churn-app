@@ -62,6 +62,17 @@ st.sidebar.dataframe(input_data)
 st.subheader("🔍 Hasil Prediksi")
 
 if st.button("Prediksi Sekarang"):
+    st.write("========== DEBUG ==========")
+try:
+    st.write("Feature names in model:")
+    st.write(list(model.feature_names_in_))
+except Exception as e:
+    st.write("Model tidak punya feature_names_in_.")
+    st.write(str(e))
+st.write("Feature names in input:")
+st.write(list(input_data.columns))
+st.write("============================")
+
     pred = model.predict(input_data)
     prob = model.predict_proba(input_data)[0][1] if hasattr(model, "predict_proba") else None
 
@@ -118,5 +129,6 @@ st.markdown("""
 - **True Negative** → pelanggan bertahan yang diprediksi bertahan.  
 - **False Negative** → pelanggan churn tapi salah diprediksi bertahan.
 """)
+
 
 

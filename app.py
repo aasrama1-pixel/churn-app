@@ -23,7 +23,7 @@ st.divider()
 # ======================
 # 3. INPUT DATA USER
 # ======================
-st.sidebar.header("🔧 Input Data Pelanggan")
+st.sidebar.header("Input Data Pelanggan")
 
 usia = st.sidebar.number_input("Usia", min_value=18, max_value=100, value=30)
 lama_langganan_bulan = st.sidebar.number_input("Lama Langganan (bulan)", min_value=0, max_value=120, value=12)
@@ -94,6 +94,7 @@ if st.button("Prediksi Sekarang"):
             st.success("✅ Pelanggan memiliki **risiko rendah** untuk churn. Jaga kepuasan mereka dengan layanan konsisten.")
 
 st.divider()
+
 
 
 

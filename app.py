@@ -14,7 +14,17 @@ try:
 except Exception as e:
     st.write("Model tidak memiliki atribut feature_names_in_. Gunakan array tanpa kolom.")
 
-model = joblib.load('model.pkl')  # ganti nama file sesuai model kamu
+model = joblib.load('model.pkl') 
+st.write("===== DEBUG MODEL INFO =====")
+try:
+    st.write("Fitur yang digunakan saat training:")
+    st.write(list(model.feature_names_in_))
+except Exception as e:
+    st.write("Model tidak punya atribut feature_names_in_.")
+    st.write(e)
+st.write("=============================")
+
+# ganti nama file sesuai model kamu
 # opsional: jika punya dataset asli untuk ditampilkan
 # df = pd.read_csv('churn.csv')
 
@@ -108,4 +118,5 @@ st.markdown("""
 - **True Negative** → pelanggan bertahan yang diprediksi bertahan.  
 - **False Negative** → pelanggan churn tapi salah diprediksi bertahan.
 """)
+
 
